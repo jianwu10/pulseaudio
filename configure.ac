@@ -1328,11 +1328,19 @@ fi
 
 #### PulseAudio system runtime dir ####
 
-PA_SYSTEM_RUNTIME_PATH="${localstatedir}/run/pulse"
+#PA_SYSTEM_RUNTIME_PATH="${localstatedir}/run/pulse"
+PA_SYSTEM_RUNTIME_PATH="/run/pulse"
+
 AX_DEFINE_DIR(PA_SYSTEM_RUNTIME_PATH, PA_SYSTEM_RUNTIME_PATH, [System runtime dir])
-PA_SYSTEM_CONFIG_PATH="${localstatedir}/lib/pulse"
+
+#PA_SYSTEM_CONFIG_PATH="${localstatedir}/lib/pulse"
+PA_SYSTEM_CONFIG_PATH="/lib/pulse"
+
 AX_DEFINE_DIR(PA_SYSTEM_CONFIG_PATH, PA_SYSTEM_CONFIG_PATH, [System config dir])
-PA_SYSTEM_STATE_PATH="${localstatedir}/lib/pulse"
+
+#PA_SYSTEM_STATE_PATH="${localstatedir}/lib/pulse"
+PA_SYSTEM_STATE_PATH="/lib/pulse"
+
 AX_DEFINE_DIR(PA_SYSTEM_STATE_PATH, PA_SYSTEM_STATE_PATH, [System state dir])
 
 PA_BINARY=${bindir}/pulseaudio${EXEEXT}
