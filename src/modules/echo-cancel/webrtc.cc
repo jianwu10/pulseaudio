@@ -244,7 +244,7 @@ bool pa_webrtc_ec_init(pa_core *c, pa_echo_canceller *ec,
     pa_modargs *ma;
     bool trace = false;
 
-    pa_log("Start init function...")
+    pa_log("Start init function...");
 
     if (!(ma = pa_modargs_new(args, valid_modargs))) {
         pa_log("Failed to parse submodule arguments.");
@@ -493,7 +493,7 @@ bool pa_webrtc_ec_init(pa_core *c, pa_echo_canceller *ec,
         ec->params.webrtc.play_buffer[i] = pa_xnew(float, *nframes);
 
     pa_modargs_free(ma);
-    pa_log("Finish init function...")
+    pa_log("Finish init function...");
     return true;
 
 fail:
@@ -504,7 +504,7 @@ fail:
         delete ((PaWebrtcTraceCallback *) ec->params.webrtc.trace_callback);
     } if (apm)
         delete apm;
-    pa_log("Finish init function...")
+    pa_log("Finish init function...");
     return false;
 }
 
@@ -573,16 +573,16 @@ void pa_webrtc_ec_set_drift(pa_echo_canceller *ec, float drift) {
 }
 
 void pa_webrtc_ec_run(pa_echo_canceller *ec, const uint8_t *rec, const uint8_t *play, uint8_t *out) {
-    pa_log("Start run function...")
+    pa_log("Start run function...");
     pa_webrtc_ec_play(ec, play);
     pa_webrtc_ec_record(ec, rec, out);
-    pa_log("Finish run function...")
+    pa_log("Finish run function...");
 }
 
 void pa_webrtc_ec_done(pa_echo_canceller *ec) {
     int i;
 
-    pa_log("Start done function...")
+    pa_log("Start done function...");
 
     if (ec->params.webrtc.trace_callback) {
         webrtc::Trace::ReturnTrace();
@@ -599,5 +599,5 @@ void pa_webrtc_ec_done(pa_echo_canceller *ec) {
     for (i = 0; i < ec->params.webrtc.play_ss.channels; i++)
         pa_xfree(ec->params.webrtc.play_buffer[i]);
 
-    pa_log("Finish done function...")
+    pa_log("Finish done function...");
 }
