@@ -2038,7 +2038,8 @@ module_suspend_on_idle_la_CFLAGS = $(AM_CFLAGS)
 module_echo_cancel_la_SOURCES = \
 		modules/echo-cancel/module-echo-cancel.c \
 		modules/echo-cancel/null.c \
-		modules/echo-cancel/echo-cancel.h
+		modules/echo-cancel/echo-cancel.h \
+		modules/echo-cancel/amazon.c
 module_echo_cancel_la_LDFLAGS = $(MODULE_LDFLAGS)
 module_echo_cancel_la_LIBADD = $(MODULE_LIBADD)
 module_echo_cancel_la_CFLAGS = $(AM_CFLAGS) $(SERVER_CFLAGS)

@@ -91,6 +91,9 @@ typedef enum {
 #ifdef HAVE_WEBRTC
     PA_ECHO_CANCELLER_WEBRTC,
 #endif
+#ifdef HAVE_AMAZON_EC
+    PA_ECHO_CANCELLER_AMAZON,
+#endif
 } pa_echo_canceller_method_t;
 
 #ifdef HAVE_WEBRTC
@@ -131,6 +134,13 @@ static const pa_echo_canceller ec_table[] = {
         .set_drift              = pa_webrtc_ec_set_drift,
         .run                    = pa_webrtc_ec_run,
         .done                   = pa_webrtc_ec_done,
+    },
+#endif
+#ifdef HAVE_AMAZON_EC
+    {
+        .init                   = pa_amazon_ec_init,
+        .run                    = pa_amazon_ec_run,
+        .done                   = pa_amazon_ec_done,
     },
 #endif
 };
@@ -1627,6 +1637,10 @@ static pa_echo_canceller_method_t get_ec_method_from_string(const char *method) 
 #ifdef HAVE_WEBRTC
     if (pa_streq(method, "webrtc"))
         return PA_ECHO_CANCELLER_WEBRTC;
+#endif
+#ifdef HAVE_AMAZON_EC
+    if (pa_streq(method, "amazon"))
+        return PA_ECHO_CANCELLER_AMAZON;
 #endif
     return PA_ECHO_CANCELLER_INVALID;
 }

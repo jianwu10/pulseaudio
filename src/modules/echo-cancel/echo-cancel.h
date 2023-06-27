@@ -186,4 +186,15 @@ void pa_webrtc_ec_done(pa_echo_canceller *ec);
 PA_C_DECL_END
 #endif
 
+#ifdef HAVE_AMAZON_EC
+/* Amazon's echo canceller */
+bool pa_amazon_ec_init(pa_core *c, pa_echo_canceller *ec,
+                       pa_sample_spec *rec_ss, pa_channel_map *rec_map,
+                       pa_sample_spec *play_ss, pa_channel_map *play_map,
+                       pa_sample_spec *out_ss, pa_channel_map *out_map,
+                       uint32_t *nframes, const char *args);
+void pa_amazon_ec_run(pa_echo_canceller *ec, const uint8_t *rec, const uint8_t *play, uint8_t *out);
+void pa_amazon_ec_done(pa_echo_canceller *ec);
+#endif
+
 #endif /* fooechocancelhfoo */
