@@ -2047,9 +2047,6 @@ module_echo_cancel_la_SOURCES += \
 		modules/echo-cancel/adrian-aec.c modules/echo-cancel/adrian-aec.h \
 		modules/echo-cancel/adrian.c modules/echo-cancel/adrian.h
 module_echo_cancel_la_CFLAGS += -DHAVE_ADRIAN_EC=1
-if HAVE_AMAZON_EC
-module_echo_cancel_la_SOURCES += \
-		modules/echo-cancel/amazon.c
 module_echo_cancel_la_CFLAGS += -DHAVE_AMAZON_EC=1
 ORC_SOURCE += modules/echo-cancel/adrian-aec
 if HAVE_ORC
@@ -2064,6 +2061,9 @@ if HAVE_SPEEX
 module_echo_cancel_la_SOURCES += modules/echo-cancel/speex.c
 module_echo_cancel_la_CFLAGS += $(LIBSPEEX_CFLAGS)
 module_echo_cancel_la_LIBADD += $(LIBSPEEX_LIBS)
+endif
+if HAVE_AMAZON_EC
+module_echo_cancel_la_SOURCES += modules/echo-cancel/amazon.c
 endif
 if HAVE_WEBRTC
 # The webrtc code is split off into a helper library to avoid having automake
