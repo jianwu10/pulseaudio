@@ -59,6 +59,11 @@ struct pa_echo_canceller_params {
             AEC *aec;
         } adrian;
 #endif
+#ifdef HAVE_AMAZON_EC
+        struct {
+            pa_sample_spec out_ss;
+        } amazon;
+#endif
 #ifdef HAVE_WEBRTC
         struct {
             /* This is a void* so that we don't have to convert this whole file

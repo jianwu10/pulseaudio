@@ -2038,8 +2038,7 @@ module_suspend_on_idle_la_CFLAGS = $(AM_CFLAGS)
 module_echo_cancel_la_SOURCES = \
 		modules/echo-cancel/module-echo-cancel.c \
 		modules/echo-cancel/null.c \
-		modules/echo-cancel/echo-cancel.h \
-		modules/echo-cancel/amazon.c
+		modules/echo-cancel/echo-cancel.h
 module_echo_cancel_la_LDFLAGS = $(MODULE_LDFLAGS)
 module_echo_cancel_la_LIBADD = $(MODULE_LIBADD)
 module_echo_cancel_la_CFLAGS = $(AM_CFLAGS) $(SERVER_CFLAGS)
@@ -2048,6 +2047,10 @@ module_echo_cancel_la_SOURCES += \
 		modules/echo-cancel/adrian-aec.c modules/echo-cancel/adrian-aec.h \
 		modules/echo-cancel/adrian.c modules/echo-cancel/adrian.h
 module_echo_cancel_la_CFLAGS += -DHAVE_ADRIAN_EC=1
+if HAVE_AMAZON_EC
+module_echo_cancel_la_SOURCES += \
+		modules/echo-cancel/amazon.c
+module_echo_cancel_la_CFLAGS += -DHAVE_AMAZON_EC=1
 ORC_SOURCE += modules/echo-cancel/adrian-aec
 if HAVE_ORC
 nodist_module_echo_cancel_la_SOURCES = \

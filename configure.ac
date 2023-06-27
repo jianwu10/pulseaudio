@@ -1406,6 +1406,12 @@ AS_IF([test "x$enable_adrian_aec" != "xno"],
     [HAVE_ADRIAN_EC=1])
 AM_CONDITIONAL([HAVE_ADRIAN_EC], [test "x$HAVE_ADRIAN_EC" = "x1"])
 
+AC_ARG_ENABLE([amazon-aec],
+    AS_HELP_STRING([--enable-amazon-aec], [Enable Amazon echo canceller]))
+AS_IF([test "x$enable_amazon_aec" != "xno"],
+    [HAVE_AMAZON_EC=1])
+AM_CONDITIONAL([HAVE_AMAZON_EC], [test "x$HAVE_AMAZON_EC" = "x1"])
+
 
 #### Thread support ####
 
@@ -1585,6 +1591,7 @@ AS_IF([test "x$HAVE_OPENSSL" = "x1"], ENABLE_OPENSSL=yes, ENABLE_OPENSSL=no)
 AS_IF([test "x$HAVE_FFTW" = "x1"], ENABLE_FFTW=yes, ENABLE_FFTW=no)
 AS_IF([test "x$HAVE_ORC" = "xyes"], ENABLE_ORC=yes, ENABLE_ORC=no)
 AS_IF([test "x$HAVE_ADRIAN_EC" = "x1"], ENABLE_ADRIAN_EC=yes, ENABLE_ADRIAN_EC=no)
+AS_IF([test "x$HAVE_AMAZON_EC" = "x1"], ENABLE_AMAZON_EC=yes, ENABLE_AMAZON_EC=no)
 AS_IF([test "x$HAVE_SPEEX" = "x1"], ENABLE_SPEEX=yes, ENABLE_SPEEX=no)
 AS_IF([test "x$HAVE_SOXR" = "x1"], ENABLE_SOXR=yes, ENABLE_SOXR=no)
 AS_IF([test "x$HAVE_WEBRTC" = "x1"], ENABLE_WEBRTC=yes, ENABLE_WEBRTC=no)
