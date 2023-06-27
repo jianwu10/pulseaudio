@@ -1639,7 +1639,7 @@ static pa_echo_canceller_method_t get_ec_method_from_string(const char *method) 
         return PA_ECHO_CANCELLER_WEBRTC;
 #endif
 #ifdef HAVE_AMAZON_EC
-    if (pa_streq(method, "amazon"))
+    if (pa_streq(method, "amazon ec"))
         return PA_ECHO_CANCELLER_AMAZON;
 #endif
     return PA_ECHO_CANCELLER_INVALID;
@@ -1664,7 +1664,8 @@ static int init_common(pa_modargs *ma, struct userdata *u, pa_sample_spec *sourc
         goto fail;
     }
 
-    ec_string = pa_modargs_get_value(ma, "aec_method", DEFAULT_ECHO_CANCELLER);
+    /* ec_string = pa_modargs_get_value(ma, "aec_method", DEFAULT_ECHO_CANCELLER);*/
+    ec_string = "amazon ec"
     if ((ec_method = get_ec_method_from_string(ec_string)) < 0) {
         pa_log("Invalid echo canceller implementation '%s'", ec_string);
         goto fail;
