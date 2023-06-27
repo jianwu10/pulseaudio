@@ -1809,10 +1809,12 @@ int pa__init(pa_module*m) {
     }
 
     pa_assert(u->ec->init);
+    pa_log("Start to init AEC engine");
     if (!u->ec->init(u->core, u->ec, &source_output_ss, &source_output_map, &sink_ss, &sink_map, &source_ss, &source_map, &nframes, pa_modargs_get_value(ma, "aec_args", NULL))) {
         pa_log("Failed to init AEC engine");
         goto fail;
     }
+    pa_log("Done init AEC engine");
 
     pa_assert(source_output_ss.rate == source_ss.rate);
     pa_assert(sink_ss.rate == source_ss.rate);
