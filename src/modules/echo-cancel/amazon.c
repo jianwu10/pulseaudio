@@ -34,9 +34,9 @@ bool pa_amazon_ec_init(pa_core *c, pa_echo_canceller *ec,
 void pa_amazon_ec_run(pa_echo_canceller *ec, const uint8_t *rec, const uint8_t *play, uint8_t *out) {
     /* The null implementation simply copies the recorded buffer to the output
        buffer and ignores the play buffer. */
-    pa_log("Run Amazon EC...")
+    pa_log("Run Amazon EC...");
     memcpy(out, rec, 256 * pa_frame_size(&ec->params.null.out_ss));
-    pa_log("Finished running Amazon EC...")
+    pa_log("Finished running Amazon EC...");
 }
 
 void pa_amazon_ec_done(pa_echo_canceller *ec) {
