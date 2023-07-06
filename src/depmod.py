@@ -15,13 +15,13 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
 
-import sys, os, string
+import sys, os, string, shlex
 
 exported_symbols = {}
 imported_symbols = {}
 
 for fn in sys.argv[1:]:
-    f = os.popen("nm '%s'" % fn, "r")
+    f = os.popen("nm '%s'" % shlex.quote(fn), "r")
 
     imported_symbols[fn] = []
 
@@ -49,7 +49,7 @@ unresolved_symbols = {}
 
 for fn in imported_symbols:
     dependencies[fn] = []
-    
+
     for sym in imported_symbols[fn]:
         if exported_symbols.has_key(sym):
             if exported_symbols[sym] not in dependencies[fn]:
