@@ -204,12 +204,15 @@ fail:
 }
 
 void pa_speex_ec_run(pa_echo_canceller *ec, const uint8_t *rec, const uint8_t *play, uint8_t *out) {
+    pa_log("Start runnning speex ec...");
     speex_echo_cancellation(ec->params.speex.state, (const spx_int16_t *) rec, (const spx_int16_t *) play,
                             (spx_int16_t *) out);
 
     /* preprecessor is run after AEC. This is not a mistake! */
     if (ec->params.speex.pp_state)
         speex_preprocess_run(ec->params.speex.pp_state, (spx_int16_t *) out);
+
+    pa_log("Finished runnning speex ec.");
 }
 
 void pa_speex_ec_done(pa_echo_canceller *ec) {
